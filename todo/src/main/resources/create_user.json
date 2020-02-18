@@ -1,0 +1,14 @@
+{
+	"firstName":"admin",
+	"lastName":"admin",
+	"email":"admin@gmail.com",
+	"userName":"admin",
+	"password":"admin123",
+	"enabled":0,
+	"created":"2017-07-12T21:43:45Z",
+	"roles":[{
+		"id":1
+	}
+	]
+	
+}

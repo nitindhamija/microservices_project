@@ -1,0 +1,41 @@
+{
+	"firstName":"nitin",
+	"lastName":"dhamija",
+	"email":"nitindhamija@gmail.com",
+	"userName":"nitindhamija",
+	"password":"nitin123",
+	"enabled":0,
+	"created":"2017-07-12T21:43:45Z",
+	"roles":[{
+		"id":1
+	},
+	{
+	"id":2
+	}
+	]
+	
+},
+{
+	"firstName":"admin",
+	"lastName":"admin",
+	"email":"admin@gmail.com",
+	"userName":"admin",
+	"password":"admin123",
+	"enabled":0,
+	"created":"2017-07-12T21:43:45Z",
+	"roles":[{
+		"id":1
+	}
+	]
+	
+}
+
+
+{
+		"id":4,
+		"role":"BA"
+		
+	}
+	
+	
+{"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaXRpbmRoYW1pamEiLCJzY29wZXMiOiJST0xFX2FkbWluLFJPTEVfZGV2ZWxvcGVyIiwiaWF0IjoxNTU4NDM3MjIzLCJleHAiOjE1NTg0NTUyMjN9.UbG-GVFjfa7AaVJRIjJ2MQNi50hBkvNj6w1XtG1Iibo"}
