@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.nd.ms.webcrawler.dao.IWebCrawlerDAO;
@@ -18,7 +19,8 @@ public class WebCrawlerServiceImpl implements IWebCrawlerService {
 	@Autowired
 	private IWebCrawlerDAO webCrawlerDAO;
 
-	
+	@Autowired
+	private ApplicationContext appContext;
 	
 	/*@Override
 	public List<CrawlRequest> getTodoList() {
@@ -46,8 +48,12 @@ public class WebCrawlerServiceImpl implements IWebCrawlerService {
 public void processAndPersistRequestList(List<CrawlRequest> reqList) {
 	ExecutorService executor = Executors.newFixedThreadPool(5);
 	reqList.forEach(req->{
-		Runnable runnable=new CrawlRequestRunnable(req.getBaseUrl(),req.getDepth());
-		Future<?> taskStatus=	executor.submit(runnable);
+		CrawlRequestRunnable cr=appContext.getBean(CrawlRequestRunnable.class);
+		cr.setBase_url(req.getBaseUrl());
+		cr.setDepth(req.getDepth());
+		//Runnable runnable=new CrawlRequestRunnable(req.getBaseUrl(),req.getDepth());
+		//Runnable runnable=new CrawlRequestRunnable(req.getBaseUrl(),req.getDepth());
+		Future<?> taskStatus=	executor.submit(cr);
 	});
 	executor.shutdown();
     while (!executor.isTerminated()) {

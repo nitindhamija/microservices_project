@@ -22,7 +22,7 @@ public class Details implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "details_id", unique = true, nullable = false)
-	private Long details_id;
+	private Long detailsId;
 
 	@Column(name = "pageTitle")
 	private String pageTitle;
@@ -33,27 +33,28 @@ public class Details implements Serializable {
 	@Column(name = "imageCount")
 	private int imageCount;
 
-	@ManyToOne
-	@JoinColumn(name = "id", nullable = false)
-	private CrawlResponse crawlResponse;
+	//@ManyToOne
+	//@JoinColumn(name = "id", nullable = false)
+	//private CrawlResponse crawlResponse;
 
 
 
-	public Long getDetails_id() {
-		return details_id;
+
+	public Long getDetailsId() {
+		return detailsId;
 	}
 
-	public void setDetails_id(Long details_id) {
-		this.details_id = details_id;
+	public void setDetailsId(Long detailsId) {
+		this.detailsId = detailsId;
 	}
 
-	public CrawlResponse getCrawlResponse() {
+/*	public CrawlResponse getCrawlResponse() {
 		return crawlResponse;
 	}
 
 	public void setCrawlResponse(CrawlResponse crawlResponse) {
 		this.crawlResponse = crawlResponse;
-	}
+	}*/
 
 	public String getPageTitle() {
 		return pageTitle;

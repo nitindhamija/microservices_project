@@ -10,6 +10,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.nd.ms.webcrawler.dao.ICrawlerResponseDAO;
@@ -19,7 +21,15 @@ import com.nd.ms.webcrawler.model.Details;
 import com.nd.ms.webcrawler.model.Status;
 
 @Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CrawlRequestRunnable implements Runnable {
+
+	public String getBase_url() {
+		return base_url;
+	}
+	public int getDepth() {
+		return depth;
+	}
 
 	@Autowired
 	private ICrawlerResponseDAO crawlerResponseDAO;
@@ -27,14 +37,21 @@ public class CrawlRequestRunnable implements Runnable {
 	@Autowired
 	private IWebCrawlerDAO webCrawlerDAO;
 	
-	private final String base_url;
+	private  String base_url;
 
-	private final int depth;
+	private  int depth;
 
 	// private int depth_counter = 0;
 
-	private static int total_links = 0;
-	private static int total_images = 0;
+	public void setBase_url(String base_url) {
+		this.base_url = base_url;
+	}
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+
+	private  int total_links = 0;
+	private  int total_images = 0;
 
 	private HashSet<String> links;
 	private List<Details> detailList;
@@ -71,7 +88,7 @@ public class CrawlRequestRunnable implements Runnable {
 	}
 
 	public void getPageLinks(String URL, int depth) {
-		if ((!links.contains(URL) && (depth > 0))) {
+		if ((!links.contains(URL) && !"".equalsIgnoreCase(URL) && (depth > 0))) {
 			System.out.println(">> Depth: " + depth + " [" + URL + "]");
 			try {
 				links.add(URL);
