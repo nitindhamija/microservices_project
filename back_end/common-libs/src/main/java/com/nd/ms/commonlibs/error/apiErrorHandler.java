@@ -1,4 +1,4 @@
-/*package com.example.demo.errors;
+package com.nd.ms.commonlibs.error;
 
 import java.io.IOException;
 
@@ -14,4 +14,3 @@ public class apiErrorHandler extends DefaultResponseErrorHandler{
 			 System.out.println("token expired");
 	  }
 }
-*/

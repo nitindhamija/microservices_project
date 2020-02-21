@@ -1,0 +1,15 @@
+# Configure this Discovery Server
+#eureka:
+#  instance:
+#    hostname: localhost
+spring:
+  application:
+    name: eureka-discovery-server
+eureka:
+  client:  # Not a client, don't register with yourself
+    registerWithEureka: false
+    fetchRegistry: false
+       
+# HTTP Server
+server:
+  port: 8761

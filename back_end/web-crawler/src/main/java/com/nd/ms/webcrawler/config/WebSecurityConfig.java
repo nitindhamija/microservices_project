@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.nd.ms.webcrawler.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	 http.headers().frameOptions().disable();
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/token/*", "/signup","/role/*","/h2/**","/favicon.ico").permitAll()
+                .antMatchers("/token/*", "/signup","/role/*","/h2/**","/favicon.ico","/webcrawler/process").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(getUnauthorizedHandler()).and()
