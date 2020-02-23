@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import com.nd.ms.webcrawler.dao.ICrawlerRequestDAO;
+import com.nd.ms.webcrawler.dao.ICrawlerResponseDAO;
 import com.nd.ms.webcrawler.dao.IWebCrawlerDAO;
 import com.nd.ms.webcrawler.model.CrawlRequest;
+import com.nd.ms.webcrawler.model.CrawlResponse;
 import com.nd.ms.webcrawler.service.IWebCrawlerService;
 import com.nd.ms.webcrawler.utils.CrawlRequestRunnable;
 
@@ -22,6 +25,11 @@ public class WebCrawlerServiceImpl implements IWebCrawlerService {
 	@Autowired
 	private ApplicationContext appContext;
 	
+	@Autowired
+	private ICrawlerResponseDAO crawlerResponseDAO;
+	
+	@Autowired
+	private ICrawlerRequestDAO crawlerRequestDAO;
 	/*@Override
 	public List<CrawlRequest> getTodoList() {
 		// TODO Auto-generated method stub
@@ -51,15 +59,35 @@ public void processAndPersistRequestList(List<CrawlRequest> reqList) {
 		CrawlRequestRunnable cr=appContext.getBean(CrawlRequestRunnable.class);
 		cr.setBase_url(req.getBaseUrl());
 		cr.setDepth(req.getDepth());
-		//Runnable runnable=new CrawlRequestRunnable(req.getBaseUrl(),req.getDepth());
-		//Runnable runnable=new CrawlRequestRunnable(req.getBaseUrl(),req.getDepth());
 		Future<?> taskStatus=	executor.submit(cr);
 	});
 	executor.shutdown();
     while (!executor.isTerminated()) {
     }
 }
-	
+
+
+@Override
+public CrawlResponse fetchCrawlResponse(String url) {
+	// TODO Auto-generated method stub
+	 	return crawlerResponseDAO.findByCrawlUrl(url);
+	 //	return null;
+}
+
+
+@Override
+public CrawlRequest fetchCrawledUrlStatus(String url) {
+	// TODO Auto-generated method stub
+	return crawlerRequestDAO.findByBaseUrl(url);
+}
+
+@Override
+public boolean checkIfExists(String url,int depth) {
+	// TODO Auto-generated method stub
+	return crawlerRequestDAO.findByBaseUrlAndDepth(url, depth)!=null;
+}
+
+
 
 /*
 	@Override

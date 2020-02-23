@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Crawl_Response")
 public class CrawlResponse {
@@ -37,11 +39,17 @@ public class CrawlResponse {
 		this.totalImages = totalImages;
 		this.details = details;
 	}
+	
+	public CrawlResponse() {
+		super();
+	
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
+	@JsonIgnore
 	@Column(name = "crawl_url")
 	private String crawlUrl;
 

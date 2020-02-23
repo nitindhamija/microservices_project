@@ -21,31 +21,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.nd.ms.webcrawler.model.CrawlRequest;
+import com.nd.ms.webcrawler.model.CrawlResponse;
 import com.nd.ms.webcrawler.model.Status;
 import com.nd.ms.webcrawler.service.IWebCrawlerService;
 @org.springframework.web.bind.annotation.RestController
-@CrossOrigin(origins = {"http://localhost:4200","http://localhost:8081","http://10.194.29.146:8090"})
+//@CrossOrigin(origins = {"http://localhost:4200","http://localhost:8081","http://10.194.29.146:8090"})
 //@CrossOrigin(origins = {"http://mystdhamija.tk"})
 @RequestMapping("/webcrawler")
 public class WebCrawlerController {
 	
 	@Autowired
 	private IWebCrawlerService webCrawlerService;
-	//public final String APP_NAME="webcrawler";
- /*@RequestMapping("/todos")
- public String greet() {
-  return "Hello from the other side!!!";
- }*/
-/*	@GetMapping(APP_NAME+"/getcrawledlists")
-    public ResponseEntity<List<Todo>> getCrawledLists() {
- 	List<Todo> list = webCrawlerService.getCrawledLists();
- 	return new ResponseEntity<List<Todo>>(list, HttpStatus.OK);
- }
-	*/
+
 	@PostMapping("/process")
 	public ResponseEntity<CrawlRequest> createCrawlRequest(@RequestParam String baseUrl,@RequestParam int depth ) {
 		 CrawlRequest req=null;
-		if(depth>0)
+		 boolean flag=webCrawlerService.checkIfExists(baseUrl, depth);
+		if(depth>0 && !flag)
 			{ 
 			req = webCrawlerService.processCrawlRequest(new CrawlRequest(baseUrl,Status.SUBMITTED.toString(),depth));
 			}
@@ -65,23 +57,19 @@ public class WebCrawlerController {
 			 webCrawlerService.fetchAndProcessRequests();
 			
 	}
-/*	@PutMapping(APP_NAME+"/todos")
-	public ResponseEntity<Todo> updateTodo(@RequestBody Todo todo) {
-		webCrawlerService.updateTodo(todo.getId(),todo.isCompleted());
-		return new ResponseEntity<Todo>(todo,HttpStatus.OK);
-	}
 	
-	@PutMapping(APP_NAME+"/todosall")
-	public ResponseEntity<Void> updateTodoAll(@RequestParam("checkAll") Boolean checkAll) {
-		webCrawlerService.updateTodoAll(checkAll);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
+	@GetMapping("/get-url-response")
+    public ResponseEntity<CrawlResponse> getCrawledResponse(@RequestParam("baseUrl") String BaseUrl) {
+ 	CrawlResponse res = webCrawlerService.fetchCrawlResponse(BaseUrl);
+ 	return new ResponseEntity<CrawlResponse>(res, HttpStatus.OK);
+ }
 	
-	@DeleteMapping(APP_NAME+"/todos")
-	public ResponseEntity<Void> deleteTodo(@RequestParam("id") int id) {
-		webCrawlerService.deleteTodo(id);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}*/
+	@GetMapping("/get-url-crawl-status")
+    public ResponseEntity<CrawlRequest> getCrawledStatus(@RequestParam("baseUrl") String url) {
+		CrawlRequest req = webCrawlerService.fetchCrawledUrlStatus(url);
+ 	return new ResponseEntity<CrawlRequest>(req, HttpStatus.OK);
+ }
+
 	@GetMapping("/info")
     public ResponseEntity<String> getAppStatus() {
  	System.out.println("web-crawler is up and running");

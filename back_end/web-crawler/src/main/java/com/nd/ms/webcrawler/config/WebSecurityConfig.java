@@ -1,6 +1,5 @@
 package com.nd.ms.webcrawler.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -27,7 +26,6 @@ import com.nd.ms.commonlibs.security.CommonAuthenticationTokenFilter;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(securedEnabled = true)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -60,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	 http.headers().frameOptions().disable();
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/token/*", "/signup","/role/*","/h2/**","/favicon.ico","/webcrawler/process").permitAll()
+                .antMatchers("/token/*", "/signup","/role/*","/h2/**","/favicon.ico","/webcrawler/process","/webcrawler/get-url-response","/webcrawler/get-url-crawl-status").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(getUnauthorizedHandler()).and()

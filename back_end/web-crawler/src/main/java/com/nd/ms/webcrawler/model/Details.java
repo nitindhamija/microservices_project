@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Details")
 public class Details implements Serializable {
@@ -18,10 +20,15 @@ public class Details implements Serializable {
 	/**
 	 * 
 	 */
+	
+	public Details() {
+		super();
+	}
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "details_id", unique = true, nullable = false)
+	@JsonIgnore
 	private Long detailsId;
 
 	@Column(name = "pageTitle")

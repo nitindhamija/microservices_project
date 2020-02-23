@@ -79,7 +79,7 @@ public class CrawlRequestRunnable implements Runnable {
 		System.out.println("saving the record ");
 		try {
 		CrawlResponse crawlRespone=crawlerResponseDAO.save(new CrawlResponse(this.base_url, links.size(), total_images, detailList));
-		System.out.println("saving the record ");
+		System.out.println("saved the record ");
 		
 		webCrawlerDAO.updateCrawlRequest(base_url,Status.Processed.toString());
 		}catch(Exception e) {
