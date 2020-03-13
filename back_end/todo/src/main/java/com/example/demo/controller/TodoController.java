@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.example.demo.model.Todo;
 import com.example.demo.service.ITodoService;
-@org.springframework.web.bind.annotation.RestController
-@CrossOrigin(origins = {"http://localhost:4200","http://localhost:8081","http://10.194.29.146:8090"})
-//@CrossOrigin(origins = {"http://mystdhamija.tk"})
+@RestController
+//@CrossOrigin(origins = {"http://localhost:4200","http://localhost:8081","http://10.194.29.146:8090"})
+@CrossOrigin
 public class TodoController {
 	
 	@Autowired

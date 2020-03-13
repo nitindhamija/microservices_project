@@ -90,7 +90,7 @@
 
 		<dependency>
 			<groupId>com.nd.ms</groupId>
-			<artifactId>common-libs</artifactId>
+			<artifactId>ms-common-libs</artifactId>
 			<version>${common-libs.version}</version>
 		</dependency>
 	</dependencies>

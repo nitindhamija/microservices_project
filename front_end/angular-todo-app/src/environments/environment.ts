@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8081/api/todo/',
-  authApiUrl:'http://localhost:8081/api/auth-service/'
+  authApiUrl:'http://localhost:8081/api/auth-service/auth/'
 };

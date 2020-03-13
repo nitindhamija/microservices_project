@@ -60,12 +60,12 @@ public class TodoDAOImpl implements ITodoDAO {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(INSERT_SQL, Statement.RETURN_GENERATED_KEYS);
+				PreparedStatement ps = connection.prepareStatement(INSERT_SQL,  new String [] {"id"});
 				ps.setString(1, todo.getName());
 				return ps;
 			}
 		}, holder);
-
+		
 		int newTodoId = holder.getKey().intValue();
 		todo.setId(newTodoId);
 		return fetchTodo(newTodoId).get(0);
