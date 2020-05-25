@@ -15,6 +15,10 @@ export class TodoDataService {
   addTodo(todo: Todo): Observable<Todo> {
     return this.api.createTodo(todo);
   }
+ // Simulate POST /crawl req
+ crawlRequest(todo: Todo): Observable<Todo> {
+  return this.api.submitCrawlReq(todo);
+}
 
   // Simulate DELETE /todos/:id
   deleteTodoById(todoId: number): Observable<Todo> {

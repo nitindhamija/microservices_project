@@ -36,6 +36,14 @@ export class ApiService {
       //.catch(this.handleError);
   }
 
+  public submitCrawlReq(todo: any): Observable<Todo> {
+   
+
+    return this.http
+      .post<Todo>(API_URL + '/submit-crawl-req', todo);
+      //.catch(this.handleError);
+  }
+
   public getTodoById(todoId: number): Observable<Todo> {
     return this.http
       .get<Todo>(API_URL +  '/todos/' + todoId);

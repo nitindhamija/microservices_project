@@ -28,6 +28,10 @@ zuul:
       path: /todo/**
       serviceId: TODO
       sensitiveHeaders: Cookie,Set-Cookie
+    web-crawler:
+      path: /webcrawler/**
+      serviceId: WEB-CRAWLER
+      sensitiveHeaders: Cookie,Set-Cookie  
       
       
 # Increase the Hystrix timeout to 60s (globally)

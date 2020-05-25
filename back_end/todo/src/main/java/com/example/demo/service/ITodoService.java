@@ -12,4 +12,5 @@ public interface ITodoService {
      void deleteTodo(int todoId);
      Todo updateTodo(int todoId,boolean flag);
      void updateTodoAll(boolean flag);
+     
 }

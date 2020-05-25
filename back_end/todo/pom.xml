@@ -15,17 +15,17 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		 <failOnMissingWebXml>false</failOnMissingWebXml>
-		 <spring-cloud.version>Greenwich.RC2</spring-cloud.version>
-		 <common-libs.version>0.0.1-SNAPSHOT</common-libs.version>
-		 <common-lib-path>C:\Users\n38\.m2\repository\com\nd\ms\common-libs\0.0.1-SNAPSHOT\common-libs-0.0.1-SNAPSHOT.jar</common-lib-path>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+		<common-libs.version>0.0.1-SNAPSHOT</common-libs.version>
+		<common-lib-path>C:\Users\n38\.m2\repository\com\nd\ms\common-libs\0.0.1-SNAPSHOT\common-libs-0.0.1-SNAPSHOT.jar</common-lib-path>
 	</properties>
 
 	<dependencies>
@@ -33,10 +33,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<dependency>
- <groupId>com.h2database</groupId>
- <artifactId>h2</artifactId>
- </dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -47,54 +47,59 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		
-		<!-- Spring boot jdbc dependency -->
-<dependency>
-     <groupId>org.springframework.boot</groupId>
-     <artifactId>spring-boot-starter-jdbc</artifactId>
-</dependency>
 
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
-	<dependency>
+
+		<!-- Spring boot jdbc dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
-<dependency>
-    <groupId>javax.el</groupId>
-    <artifactId>javax.el-api</artifactId>
-    <version>3.0.0</version>
-</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 
-  <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>  
- <!--       <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.0</version>
-        </dependency>
-        -->
-        
-        	<dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>io.jsonwebtoken</groupId> <artifactId>jjwt</artifactId> 
+			<version>0.9.0</version> </dependency> -->
+
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
 
-    	<dependency>
-        		<groupId>com.nd.ms</groupId>
-        		<artifactId>ms-common-libs</artifactId>
-        		<version>0.0.1-SNAPSHOT</version>
-        		
-        	</dependency>
+		<dependency>
+			<groupId>com.nd.ms</groupId>
+			<artifactId>ms-common-libs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 
-    
+		</dependency>
+
+
+
 	</dependencies>
-<dependencyManagement>
+	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -103,7 +108,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			
+
 		</dependencies>
 	</dependencyManagement>
 	<build>
@@ -111,28 +116,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				 
+
 			</plugin>
 			<plugin>
-<artifactId>maven-resources-plugin</artifactId>
-<executions>
-      <execution>
-          <id>copy-resources</id>
-          <phase>validate</phase>
-          <goals><goal>copy-resources</goal></goals>
-          <configuration>
-              <outputDirectory>${basedir}/target/classes/static/</outputDirectory>
-              <resources>
-                  <resource>
-                       <directory>C:/nitin_office/learning/ng_experiment/angular/angular/angular-todo-app/dist</directory> 
-                    <!--      <directory>C:/Users/nitin/Downloads/material-dashboard-angular-v2.1.0/dist</directory> -->
-                  </resource>
-              </resources>
-          </configuration>
-      </execution>
-</executions>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>C:/nitin_office/learning/ng_experiment/angular/angular/angular-todo-app/dist</directory>
+									<!-- <directory>C:/Users/nitin/Downloads/material-dashboard-angular-v2.1.0/dist</directory> -->
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 
-</plugin>
+			</plugin>
 		</plugins>
 	</build>
 

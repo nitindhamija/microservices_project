@@ -7,6 +7,7 @@
     [todos]="todos"
     (toggleComplete)="onToggleTodoComplete($event)"
     (remove)="onRemoveTodo($event)"
+    (crawlReq)="onCrawlRequest($event)"
     (toggleAll)="onToggleAll($event)"
   ></app-todo-list>
   <app-todo-list-footer

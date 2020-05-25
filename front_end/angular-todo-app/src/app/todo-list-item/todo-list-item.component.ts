@@ -14,6 +14,9 @@ export class TodoListItemComponent {
   remove: EventEmitter<Todo> = new EventEmitter();
 
   @Output()
+  crawlReq: EventEmitter<Todo> = new EventEmitter();
+
+  @Output()
   toggleComplete: EventEmitter<Todo> = new EventEmitter();
 
   constructor() {
@@ -25,6 +28,9 @@ export class TodoListItemComponent {
 
   removeTodo(todo: Todo) {
     this.remove.emit(todo);
+  }
+  crawl(todo: Todo) {
+    this.crawlReq.emit(todo);
   }
 
 }

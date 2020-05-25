@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	 http.headers().frameOptions().disable();
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/auth/*", "/signup","/role/*","/h2/**","/favicon.ico","/webcrawler/process","/webcrawler/get-url-response","/webcrawler/get-url-crawl-status").permitAll()
+                .antMatchers("/auth/*", "/signup","/role/*","/h2/**","/favicon.ico","/webcrawler/get-url-response","/webcrawler/get-url-crawl-status").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(getUnauthorizedHandler()).and()

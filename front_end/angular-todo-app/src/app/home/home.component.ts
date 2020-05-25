@@ -67,6 +67,16 @@ export class HomeComponent implements OnInit {
         );
         this.getCompleteCount();
     }
+
+    onCrawlRequest(todo) {
+      this.todoDataService
+      .crawlRequest(todo).toPromise().then(
+        (newTodo) => {
+          //this.todos = this.todos.concat(newTodo);
+        }
+      );
+        this.getCompleteCount();
+    }
     onToggleAll(checkAll){
       this.todos.forEach((t: Todo) => t.completed = checkAll);
       this.todoDataService
